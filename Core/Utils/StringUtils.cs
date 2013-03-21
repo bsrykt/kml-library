@@ -123,7 +123,7 @@ namespace Core.Utils
         }
 
         public static string RemoveExcessWhiteSpace(string str) {
-            string ans = str;
+            string ans = str.Trim();
             while (ans.Contains("  ")) {
                 ans = ans.Replace("  ", " ");
             }
