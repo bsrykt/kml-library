@@ -74,7 +74,8 @@ namespace Core.Xml
             FileStream fs = new FileStream(streamPath, FileMode.Create);
             XmlSerializer xs = GetSerializer(pType);
             XmlSerializerNamespaces xmlns = new XmlSerializerNamespaces();
-            //xmlns.Add("", "");
+            xmlns.Add("", "http://www.opengis.net/kml/2.2");
+
             try {
                 m_Serializing = true;
                 xs.Serialize(fs, pObject, xmlns);

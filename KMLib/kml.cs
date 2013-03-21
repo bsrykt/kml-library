@@ -9,9 +9,7 @@ using KMLib.Feature;
 
 namespace KMLib
 {
-    //[XmlRoot(ElementName = "kml", Namespace = "http://earth.google.com/kml/2.1")]
-    //--if you add the namespace, then all children get a blank namespace attrib...
-    [XmlRoot(ElementName = "kml")]
+    [XmlRoot(ElementName = "kml", Namespace = "http://www.opengis.net/kml/2.2")]
     public class KMLRoot
     {
         public static bool deserializing;
