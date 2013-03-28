@@ -4,6 +4,7 @@ using System.Text;
 using System.Xml.Serialization;
 using System.Drawing;
 using System.Xml;
+using System.Globalization;
 
 namespace KMLib
 {
@@ -76,7 +77,7 @@ namespace KMLib
 
         public override string Serialize()
         {
-            //aabbggrr
+            //abgr
             return ByteToHex(myCol.A) + ByteToHex(myCol.B) + ByteToHex(myCol.G) + ByteToHex(myCol.R);
         }
 
@@ -91,7 +92,14 @@ namespace KMLib
 
         public override void Deserialize(string str)
         {
-            myCol = Color.White;//===NOT SUPPORTED
+            if (8 == str.Length)
+            {
+                myCol = Color.FromArgb(Int32.Parse(
+                    str.Substring(0, 2) + str.Substring(6, 2) + str.Substring(4, 2) + str.Substring(2, 2),
+                    NumberStyles.HexNumber));
+            } else {
+                myCol = Color.WhiteSmoke;
+            }
         }
 
         public static implicit operator Color(ColorKML comp)

@@ -86,6 +86,39 @@ namespace KmlTestbed
 
         }
 
+        private void btnTestLoadAndSave_Click(object sender, EventArgs e)
+        {
+            LoadSave ls = new LoadSave("kml");
+            string fpath = ls.GetLoadPath();
+            if (fpath != null)
+            {
+                KMLRoot kml = KMLRoot.Load(fpath);
+                //MessageBox.Show("Loaded kml: " + fpath);
+                Style s = new Style();
+                s.Id = "#style1";
+                LineStyle lineStyle = new LineStyle();
+                lineStyle.Color = Color.White;
+                PolyStyle polyStyle = new PolyStyle();
+                polyStyle.Color = Color.FromArgb(1, 255, 0, 0);
+                s.Add(lineStyle);
+                s.Add(polyStyle);
+
+                StyleMap smap = new StyleMap();
+                smap.Id = "#sm1";
+                smap.AddPairs(new Pair("normal", "#style1"), new Pair("highlight", "#style1"));
+
+
+                kml.Document.Styles.Add(s);
+                kml.Document.Styles.Add(smap);
+
+                fpath = ls.GetSavePath();
+                if (fpath != null)
+                {
+                    kml.Save(fpath);
+                }
+            }
+        }
+
 
     }
 }

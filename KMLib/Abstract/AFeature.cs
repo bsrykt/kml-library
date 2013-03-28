@@ -127,7 +127,7 @@ namespace KMLib.Abstract
             }
         }
         [XmlIgnore()]
-        private bool TimeStampSpecified = false;
+        public bool TimeStampSpecified = false;
 
         private TimeSpan m_TimeSpan;
         [XmlElement("TimeSpan")]
@@ -144,20 +144,21 @@ namespace KMLib.Abstract
             }
         }
         [XmlIgnore()]
-        private bool TimeSpanSpecified = false;
+        public bool TimeSpanSpecified = false;
 
-        public void AddStyle(Style style)
+        public void AddStyle(AStyleSelector style)
         {
             if (m_Style == null)
             {
-                m_Style = new List<Style>();
+                m_Style = new List<AStyleSelector>();
             }
             m_Style.Add(style);
         }
 
-        private List<Style> m_Style;
+        private List<AStyleSelector> m_Style;
         [XmlElement(ElementName = "Style", Type = typeof(Style))]
-        public List<Style> Lists
+        [XmlElement(ElementName = "StyleMap", Type = typeof(StyleMap))]
+        public List<AStyleSelector> Styles
         {
             get
             {
@@ -168,8 +169,6 @@ namespace KMLib.Abstract
                 m_Style = value;
             }
         }
-        [XmlIgnore()]
-        private bool StyleSpecified = false;
     }    
 }
 

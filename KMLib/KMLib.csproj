@@ -55,6 +55,7 @@
     <Compile Include="Abstract\ASchemaField.cs" />
     <Compile Include="Abstract\AStyleSelector.cs" />
     <Compile Include="Abstract\ATimePrimitive.cs" />
+    <Compile Include="StyleMap.cs" />
     <Compile Include="Feature\Document.cs" />
     <Compile Include="Feature\Folder.cs" />
     <Compile Include="Feature\GroundOverlay.cs" />

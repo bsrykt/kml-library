@@ -94,7 +94,7 @@ namespace KMLib
             }
         }
         [XmlIgnore()]
-        private bool colorModeSpecified = false;
+        public bool colorModeSpecified = false;
         
     }
 
@@ -127,8 +127,12 @@ namespace KMLib
             set
             {
                 m_Width = value;
+                WidthSpecified = true;
             }
         }
+
+        [XmlIgnore()]
+        public bool WidthSpecified = false;
     }
 
     public class IconStyle : PolyStyle
@@ -165,7 +169,7 @@ namespace KMLib
             }
         }
         [XmlIgnore()]
-        private bool IconSpecified = false;
+        public bool IconSpecified = false;
 
         private float m_scale = 1.0f;
         [XmlElement("scale")]
@@ -182,7 +186,7 @@ namespace KMLib
             }
         }
         [XmlIgnore()]
-        private bool scaleSpecified = false;
+        public bool scaleSpecified = false;
     }
 
 
