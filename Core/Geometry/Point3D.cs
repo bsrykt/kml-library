@@ -79,12 +79,12 @@ namespace Core.Geometry
 
         public virtual string Serialize()
         {
-            return m_X + "," + m_Y + "," + m_Z;
+            return String.Format("{0:0.#######},{1:0.#######},{2:0.#######}", m_X, m_Y, m_Z);
         }
 
         public virtual void Deserialize(string str)
         {
-            List<string> bits = StringUtils.SplitToList(str, ",");
+            List<string> bits = StringUtils.SplitToList(str.Trim(), ",");
             m_X = Convert.ToDouble(bits[0]);
             m_Y = Convert.ToDouble(bits[1]);
             m_Z = Convert.ToDouble(bits[2]);
